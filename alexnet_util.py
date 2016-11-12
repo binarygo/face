@@ -36,7 +36,8 @@ def make_bvlc_init_ops(model, bvlc_init_data, conv_ids=None, fc_ids=None):
 def eval(images, bvlc_init_data):
     assert len(images) > 0
     with tf.Graph().as_default(), tf.Session() as sess:
-        m = AlexModel()
+        with tf.device("/cpu:0"):
+            m = AlexModel()
         
         sess.run(tf.initialize_all_variables())
         sess.run(make_bvlc_init_ops(m, bvlc_init_data))
