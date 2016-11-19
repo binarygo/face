@@ -305,5 +305,3 @@ class Dataset(object):
     @property
     def progress(self):
         return self._face_data_pool.progress
-
-        
